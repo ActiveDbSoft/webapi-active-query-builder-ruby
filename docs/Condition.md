@@ -1,5 +1,7 @@
 # WebApiActivequerybuilder::Condition
 
+Defines a constraint for original query resultset values.
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

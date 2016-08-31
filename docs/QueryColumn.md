@@ -1,5 +1,7 @@
 # WebApiActivequerybuilder::QueryColumn
 
+Provides information about particular SQL query column
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

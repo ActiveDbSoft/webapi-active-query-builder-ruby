@@ -1,5 +1,7 @@
 # WebApiActivequerybuilder::TransformResult
 
+Returns transformed SQL text in case of successful transformation. Otherwise returns error message.
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

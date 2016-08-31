@@ -1,5 +1,7 @@
 # WebApiActivequerybuilder::Transform
 
+SQL transformation parameters and commands.
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
