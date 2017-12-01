@@ -11,18 +11,45 @@ Please follow the [installation](#installation) procedure and then run the follo
 # Load the gem
 require 'webapi-active-query-builder'
 
-api_instance = WebApiActivequerybuilder::ActiveQueryBuilderApi.new
+api = WebApiActivequerybuilder::ActiveQueryBuilderApi.new
+
+metadataGuid = 'b3207f4f-b1f4-4dc2-979b-7724ed2d0221'
+sql = 'Select customer_id, first_name From customer'
 
 query = WebApiActivequerybuilder::SqlQuery.new # SqlQuery | Information about SQL query and it's context.
+query.guid = metadataGuid
+query.text = sql
 
+columns = api.get_query_columns_post(query)
+p columns
 
-begin
-  result = api_instance.get_query_columns_post(query)
-  p result
-rescue WebApiActivequerybuilder::ApiError => e
-  puts "Exception when calling ActiveQueryBuilderApi->get_query_columns_post: #{e}"
-end
+transform = WebApiActivequerybuilder::Transform.new
+transform.guid = metadataGuid
+transform.sql = sql
 
+filter = WebApiActivequerybuilder::ConditionGroup.new
+
+condition = WebApiActivequerybuilder::Condition.new
+condition.field = "customer_id"
+condition.condition_operator = "Greater"
+condition.values = [10]
+
+filter.conditions = [condition]
+
+page = WebApiActivequerybuilder::Pagination.new
+page.skip = 2
+page.take = 3
+
+order = WebApiActivequerybuilder::Sorting.new
+order.field = "customer_id"
+order.order = "asc"
+
+transform.filter = filter
+transform.pagination = page
+transform.sortings = [order]
+
+result = api.transform_sql_post(transform)
+p result
 ```
 
 ## Documentation for API Endpoints
